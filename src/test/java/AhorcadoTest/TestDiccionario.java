@@ -12,8 +12,16 @@ public class TestDiccionario {
 	public void AniadirLetraAUnArchivoVacio()
 	{
 		Diccionario diccionario = new Diccionario();
-		assertEquals(true,diccionario.AniadirPalabra("arbol"));
+		assertEquals(true,diccionario.AniadirPalabra("papayon"));
 	}
 	
-
+	@Test
+	public void AniadirLetraAlFinalDeUnArchivo()
+	{
+		Diccionario diccionario = new Diccionario();
+		String palabra = "chuleta";
+		diccionario.AniadirPalabra(palabra);
+		assertEquals(palabra,diccionario.LeerUltimaPalabraDelDiccionario());
+	}
+	
 }
