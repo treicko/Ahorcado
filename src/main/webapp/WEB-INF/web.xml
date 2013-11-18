@@ -1,0 +1,10 @@
+<web-app>
+  <servlet>
+	<servlet-name>ahorcadoServlet</servlet-name>
+	<servlet-class>AhorcadoTDD.BienvenidaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>ahorcadoServlet</servlet-name>
+	<url-pattern>/ahorcadoServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
