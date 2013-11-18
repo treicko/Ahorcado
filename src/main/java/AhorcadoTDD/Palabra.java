@@ -52,7 +52,7 @@ public class Palabra {
 		return buscarLetraEnVector(letra, _LETRAS);
 	}
 	
-	public ArrayList darOcurrencias() //ArrayList jugadas)
+	public ArrayList darOcurrencias(ArrayList jugadas)
 	{
 		ArrayList visibles = new ArrayList();
 		
@@ -62,14 +62,14 @@ public class Palabra {
 		{
 		    Letra l = (Letra)_LETRAS.get(cont);
 		    //La letra no esta dentro de las jugadas (no se muestra)
-		    /*if(!buscarLetraEnVector(l,jugadas))
+		    if(!buscarLetraEnVector(l,jugadas))
 		    {
 		    	visibles.add(new Letra('_'));
 		    }
-		    else{*/
+		    else{
 		    	//La letra ya se jugo entonces se muestra
 		    	visibles.add(l);
-		    //}
+		    }
 		    cont++;
 		}
 		return visibles;
