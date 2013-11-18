@@ -9,10 +9,11 @@ import AhorcadoTDD.Diccionario;
 public class TestDiccionario {
 
 	@Test
-	public void MensajeDeErrorSiElDiccionarioNoTieneNingunaPalabra()
+	public void AniadirLetraAUnArchivoVacio()
 	{
 		Diccionario diccionario = new Diccionario();
-		assertEquals("vacio",diccionario.LeerPalabra());
+		assertEquals(true,diccionario.AniadirPalabra("arbol"));
 	}
+	
 
 }
