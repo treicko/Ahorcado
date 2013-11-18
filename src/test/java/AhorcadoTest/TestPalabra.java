@@ -8,7 +8,7 @@ import AhorcadoTDD.Letra;
 import AhorcadoTDD.Palabra;
 
 public class TestPalabra {
-
+//ojala suba
 	@Test
 	public void devuelveTrueSiLaLetraSeEncuentraEnElVector() {
 		Palabra p = new Palabra("Ingenieria");
