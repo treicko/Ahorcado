@@ -10,3 +10,5 @@ chuleta
 papayon
 papayon
 chuleta
+papayon
+chuleta
