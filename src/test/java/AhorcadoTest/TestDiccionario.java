@@ -24,4 +24,12 @@ public class TestDiccionario {
 		assertEquals(palabra,diccionario.LeerUltimaPalabraDelDiccionario());
 	}
 	
+	@Test
+	public void DevuelveFalseSiLaPalabraAIngresarYaSeEncuentraEnElDiccionario()
+	{
+		Diccionario diccionario = new Diccionario();
+		String palabra = "macarron";
+		diccionario.AniadirPalabra(palabra);
+		assertEquals(false,diccionario.AniadirPalabra(palabra));
+	}
 }
