@@ -40,9 +40,10 @@ public class Principal {
 		//Palabra j = new Palabra("s");
 		ArrayList jugadas = new ArrayList();
 		//jugadas = j.getLetras();
-		jugadas.add("s");
+		jugadas.add(new Letra('j'));
+		jugadas.add(new Letra('s'));
 		ArrayList palabra = new ArrayList();
-		palabra = p.darOcurrencias();
+		palabra = p.darOcurrencias(jugadas);
 		//System.out.println(palabra);
 		int cont=0;
 		while(cont < palabra.size())
@@ -51,6 +52,16 @@ public class Principal {
 		    System.out.println(l.getLetra());
 		    cont++;
 		}
+		
+		Juego j = new Juego();
+		j.iniciarJuego("Sistemas");
+		boolean x,y,z;
+		x=j.jugarLetra(new Letra('S'));
+		y=j.jugarLetra(new Letra('k'));
+		z=j.jugarLetra(new Letra('m'));
+		System.out.println(x);
+		System.out.println(y);
+		System.out.println(z);
 	}
 
 }
