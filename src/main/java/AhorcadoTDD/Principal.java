@@ -52,6 +52,16 @@ public class Principal {
 		    System.out.println(l.getLetra());
 		    cont++;
 		}
+		
+		Juego j = new Juego();
+		j.iniciarJuego("Sistemas");
+		boolean x,y,z;
+		x=j.jugarLetra(new Letra('S'));
+		y=j.jugarLetra(new Letra('k'));
+		z=j.jugarLetra(new Letra('m'));
+		System.out.println(x);
+		System.out.println(y);
+		System.out.println(z);
 	}
 
 }
