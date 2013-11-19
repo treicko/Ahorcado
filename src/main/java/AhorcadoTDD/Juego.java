@@ -36,5 +36,19 @@ public class Juego {
 		}
 	}
 	
+	public Palabra darPalabraActual()
+	{
+		return _ACTUAL;
+	}
+	
+	public ArrayList darJugadas()
+	{
+		return _JUGADAS;
+	}
+	
+	public ArrayList darOcurrencias()
+	{
+		return _ACTUAL.darOcurrencias(_JUGADAS);
+	}
 	
 }
