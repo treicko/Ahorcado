@@ -1,15 +1,47 @@
 package AhorcadoTDD;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Principal {
+	
+	public static void Diccionario()
+	{
+		Diccionario dic = new Diccionario();
+		BufferedReader lectura = new BufferedReader(new InputStreamReader(System.in));
+		String Palabra = "";
+		
+		System.out.print("Ingresa la palabra: ");
+		
+		try {
+		   Palabra = lectura.readLine();
+		   System.out.print("La palabra ingresada es: "+ Palabra);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			//System.out.print(e);
+		}
+		
+		dic.AniadirPalabra(Palabra);
+	}
+	
+	public static void Juego()
+	{
+		Juego j = new Juego();
+		Diccionario dic = new Diccionario();
+		String palabra = dic.ObtenerPalabra();
+		j.iniciarJuego(palabra);
+		System.out.println(palabra);
+		System.out.println(j.darPalabraActual());
+	}
 
 	public static void main(String[] args) {
 		
 		Bienvenida b = new Bienvenida();
 		b.bienvenida();
-		
+		/*
 		boolean r;
 		char ch;
 		
@@ -62,6 +94,11 @@ public class Principal {
 		System.out.println(x);
 		System.out.println(y);
 		System.out.println(z);
+		*/
+		
+		Diccionario();
+		
+		//Juego();
 	}
 
 }

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class Diccionario {
 	
@@ -134,6 +135,54 @@ public class Diccionario {
         }
 		
 		return resp;
+	}
+
+	public String ObtenerPalabra() {
+		
+		  File archivo = null;
+	      FileReader fr = null;
+	      BufferedReader br = null;
+	      
+	      ArrayList<String> ListaPalabras = new ArrayList<String>();
+	 
+	      try 
+	      {
+	         archivo = new File ("diccionario.txt");
+	         fr = new FileReader (archivo);
+	         br = new BufferedReader(fr);
+	         String linea = "";
+	         while((linea = br.readLine())!=null)
+	        	 ListaPalabras.add(linea);
+	      }
+	      catch(Exception e)
+	      {
+	         e.printStackTrace();
+	      }
+	      finally
+	      {
+	          try
+	          {                    
+	             if( null != fr )  
+	                fr.close();               
+	          }
+	          catch (Exception e2)
+	          { 
+	             e2.printStackTrace();
+	          }
+	      }
+		
+		return GetPalabra(ListaPalabras);
+	}
+
+	private String GetPalabra(ArrayList<String> listaPalabras) {
+		
+		String pal = listaPalabras.get(1);
+		int random = (int)(Math.random()*(listaPalabras.size()-1-0+1)+0);
+		if(random!=0)
+		{
+			pal = listaPalabras.get(random);
+		}
+		return pal;
 	}
 }
 
