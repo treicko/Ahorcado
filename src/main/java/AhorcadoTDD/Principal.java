@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Principal {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		
 		Bienvenida b = new Bienvenida();
@@ -40,8 +41,8 @@ public class Principal {
 		//Palabra j = new Palabra("s");
 		ArrayList jugadas = new ArrayList();
 		//jugadas = j.getLetras();
-		jugadas.add(new Letra('j'));
-		jugadas.add(new Letra('s'));
+		jugadas.add(new Letra(' '));
+		//jugadas.add(new Letra('s'));
 		ArrayList palabra = new ArrayList();
 		palabra = p.darOcurrencias(jugadas);
 		//System.out.println(palabra);
@@ -62,6 +63,9 @@ public class Principal {
 		System.out.println(x);
 		System.out.println(y);
 		System.out.println(z);
+		
+		InterfazAhorcado juego = new InterfazAhorcado();
+		juego.iniciarJuego();
 	}
 
 }
