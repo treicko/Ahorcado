@@ -6,6 +6,9 @@ public class Palabra {
     
 	private ArrayList _LETRAS;
 	
+	public Palabra()
+	{}
+	
 	public Palabra(String palabra)
 	{
 		_LETRAS = new ArrayList();
@@ -73,5 +76,33 @@ public class Palabra {
 		    cont++;
 		}
 		return visibles;
+	}
+
+	public String OcultarPalabra(String palabra) {
+		int cont = 0;
+		String palabraOculta = "";
+		String aux = "";
+		while(cont < palabra.length())
+		{
+			palabraOculta = palabraOculta +"_ ";
+			cont++;
+		}
+		palabraOculta.substring(palabraOculta.length());
+		aux = palabraOculta.substring(0, palabraOculta.length()-1);
+		return aux;
+	}
+
+	public boolean EstaLetraEnPalabra(String palabra, char c) {
+		int cont = 0;
+		boolean resp = false;
+		while(cont < palabra.length())
+		{
+			if(c == palabra.charAt(cont))
+			{
+				resp = true;
+			}
+			cont++;
+		}
+		return resp;
 	}
 }

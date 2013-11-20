@@ -1,7 +1,6 @@
 package AhorcadoTDD;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ public class Principal {
 	{
 		boolean resp = false;
 		Diccionario dic = new Diccionario();
+		
 		BufferedReader lectura = new BufferedReader(new InputStreamReader(System.in));
 		String Palabra = "";
 		
@@ -34,18 +34,31 @@ public class Principal {
 			
 	}
 	
-	public static void Juego()
+	public static void IniciarJuego()
 	{
-		Juego j = new Juego();
 		Diccionario dic = new Diccionario();
 		String palabra = dic.ObtenerPalabra();
-		j.iniciarJuego(palabra);
-		System.out.println(palabra);
-		System.out.println(j.darPalabraActual());
+		Palabra p = new Palabra();
+		char ch = ' ';
+		
+		dic.AniadirPalabra("Avion");
+		dic.AniadirPalabra("movilidad");
+		
+		System.out.println("Palabra a Adivinar: "+p.OcultarPalabra(palabra));
+		System.out.println();
+		System.out.print("Ingresa una Letra: ");
+		// captura la palabra ingresa por teclado
+		try {
+		   ch = (char) System.in.read();	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		
 	}
 
-	public static void IngresarLetra()
+	public static void IngresarLetraAlex()
 	{
 		Bienvenida b = new Bienvenida();
 		
@@ -53,14 +66,14 @@ public class Principal {
 		char ch;
 		
 		System.out.print("Enter a character: ");
-
+		// captura la palabra ingresa por teclado
 		try {
 		   ch = (char) System.in.read();	
 		   r=b.esEnter(ch);
 		   System.out.print(r);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.print("Ingresaste al catch ");
 		}
 		
 		boolean r1;
@@ -102,7 +115,7 @@ public class Principal {
 		System.out.println(y);
 		System.out.println(z);
 	}
-		
+	
 	public static void Bienvenida()
 	{
 		Bienvenida b = new Bienvenida();
@@ -132,7 +145,7 @@ public class Principal {
 		
 		switch(opcion) {
 		 case 1: 
-			 IngresarLetra();
+			 //IngresarLetra();
 		     break;
 		 case 2: 
 			 Diccionario(); 
@@ -147,7 +160,10 @@ public class Principal {
 	}
 	
 	public static void main(String[] args) {
-		Menu();
+		//IniciarJuego();
+		String palabra = "pal a bra";
+		int i = palabra.indexOf(' ');
+		 System.out.println("resultado: " +i);
 	}
 
 }
