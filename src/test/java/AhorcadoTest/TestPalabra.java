@@ -45,5 +45,15 @@ public class TestPalabra {
 		char c2 = 'x';
 		assertTrue(palabraOculta.equals(p.MostrarLetraEnPalabra(palabra2, palabraOculta, c2)));
 	}
-
+	
+	@Test
+	public void DadaDosLetrasMuestraLaLetraEnLaPalabraSiEstaEstaEnElla()
+	{
+		Palabra p = new Palabra();
+		String palabra = "rabolead";
+		String palabraOculta = "_ _ _ _ _ _ _ _";
+		char c = 'a';
+		String valorEsperado = "_ a _ _ _ _ a _";
+		assertTrue(valorEsperado.equals(p.MostrarLetraEnPalabra(palabra, palabraOculta, c)));
+	}
 }

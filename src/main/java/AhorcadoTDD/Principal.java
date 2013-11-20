@@ -1,5 +1,7 @@
 package AhorcadoTDD;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -159,15 +161,34 @@ public class Principal {
 		 }
 	}
 	
+	public static void most()
+	{
+		String palabra = "boale";
+		System.out.println(palabra.substring(0, 5));
+		System.out.println(palabra.substring(0, 2));
+		System.out.println(palabra.substring(1, 3));
+		System.out.println(palabra.substring(1, 2));
+		System.out.println(palabra.substring(2, 4));
+		System.out.println(palabra.substring(1, 4));
+		System.out.println(palabra.substring(5, 5));
+		//System.out.println(palabra.substring(7, 100));
+	}
+	
 	public static void main(String[] args) {
 		//IniciarJuego();
 		Palabra p = new Palabra();
-		String palabra = "arbol";
+		String palabra = "ablea";
 		String palabraOculta = "_ _ _ _ _";
-		char c = 'r';
-		//String valorEsperado = "_ r _ _ _";
-		String s = p.MostrarLetraEnPalabra(palabra, palabraOculta, c);
-		 System.out.println(s);
+		char c = 'a';
+		//String valorEsperado = "_ a _ _ _ _ a _";
+		String auxp = p.MostrarLetraEnPalabra(palabra, palabraOculta, c);
+		System.out.println(auxp);
+		
+		//most();
+		
+		//Pistas p = new Pistas();
+		//String lala = p.NuevoArray("_____", 3, "arbol", 'o');
+		//System.out.println(lala);
 	}
 
 }

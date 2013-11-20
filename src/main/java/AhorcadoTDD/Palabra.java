@@ -100,10 +100,20 @@ public class Palabra {
 		{
 			if(c == palabra.charAt(cont))
 			{
-				nuevaPalabraOculta = palabraOculta.substring(0, cont+1) +c+palabraOculta.substring(cont+2,palabraOculta.length());
+				nuevaPalabraOculta = AniadirLetraAPalabra(c,cont, nuevaPalabraOculta);
 			}
 			cont++;
 		}
 		return nuevaPalabraOculta;
 	}
+
+	private String AniadirLetraAPalabra(char letra, int posicion, String palabraOculta) {
+		int antesDeLetra = posicion*2;
+		int posicionesRestantes = palabraOculta.length() -1 -antesDeLetra;
+		int despuesDeLetra = palabraOculta.length() - posicionesRestantes;
+		palabraOculta = palabraOculta.substring(0, antesDeLetra)+ letra +palabraOculta.substring(despuesDeLetra,palabraOculta.length());
+		return palabraOculta;
+	}
+	
+	
 }
