@@ -1,6 +1,7 @@
 package AhorcadoTDD;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ public class Principal {
 	
 	public static void Diccionario()
 	{
+		boolean resp = false;
 		Diccionario dic = new Diccionario();
 		BufferedReader lectura = new BufferedReader(new InputStreamReader(System.in));
 		String Palabra = "";
@@ -17,14 +19,19 @@ public class Principal {
 		
 		try {
 		   Palabra = lectura.readLine();
-		   System.out.print("La palabra ingresada es: "+ Palabra);
+		   
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			//System.out.print(e);
 		}
 		
-		dic.AniadirPalabra(Palabra);
+		resp = dic.AniadirPalabra(Palabra);
+		if(resp)
+			System.out.print("La palabra "+ Palabra+" fue ingresado exitosamente");
+		else
+			System.out.print("La palabra {"+Palabra+"} ya existe en el diccionario");
+			
 	}
 	
 	public static void Juego()
@@ -35,13 +42,13 @@ public class Principal {
 		j.iniciarJuego(palabra);
 		System.out.println(palabra);
 		System.out.println(j.darPalabraActual());
+		
 	}
 
-	public static void main(String[] args) {
-		
+	public static void IngresarLetra()
+	{
 		Bienvenida b = new Bienvenida();
-		b.bienvenida();
-		/*
+		
 		boolean r;
 		char ch;
 		
@@ -94,11 +101,53 @@ public class Principal {
 		System.out.println(x);
 		System.out.println(y);
 		System.out.println(z);
-		*/
+	}
 		
-		Diccionario();
+	public static void Bienvenida()
+	{
+		Bienvenida b = new Bienvenida();
+		b.bienvenida();
+	}
+	
+	public static void Menu()
+	{
+		int opcion = 0;
+		Bienvenida();
 		
-		//Juego();
+		BufferedReader lectura = new BufferedReader(new InputStreamReader(System.in));
+		
+		System.out.println("1. Jugar: ");
+		System.out.println("2. Agregar Palabra A Diccionario ");
+		System.out.println("");
+		System.out.println("Ingrese una Opcion: ");
+		
+		try 
+		{
+			opcion = Integer.parseInt(lectura.readLine());
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		switch(opcion) {
+		 case 1: 
+			 IngresarLetra();
+		     break;
+		 case 2: 
+			 Diccionario(); 
+		     break;
+		 
+		 default: 
+			 System.out.println("Ingrese una Opcion valida ");
+			 System.out.println();
+			 Menu();
+		     break;
+		 }
+	}
+	
+	public static void main(String[] args) {
+		Menu();
 	}
 
 }

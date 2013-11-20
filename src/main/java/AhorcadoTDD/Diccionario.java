@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -113,27 +114,20 @@ public class Diccionario {
 
 	public boolean BorrarContenido() {
 		
-		FileWriter fichero = null;
-        PrintWriter pw = null;
-	      
-        boolean resp = false;
-        try
-        {
-            	fichero = new FileWriter("diccionario.txt");
-            	pw = new PrintWriter(fichero);
-                pw.println("");
-                resp = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
-        }
-		
+		boolean resp = false;
+		File fichero = new File("diccionario.txt");
+		if (fichero.delete())
+		{
+			try {
+				  // A partir del objeto File creamos el fichero físicamente
+				  if (fichero.createNewFile())
+				    resp = true;
+				  else
+				    resp = false;
+				} catch (IOException ioe) {
+				  ioe.printStackTrace();
+				}
+		}	 
 		return resp;
 	}
 
@@ -175,14 +169,8 @@ public class Diccionario {
 	}
 
 	private String GetPalabra(ArrayList<String> listaPalabras) {
-		
-		String pal = listaPalabras.get(1);
 		int random = (int)(Math.random()*(listaPalabras.size()-1-0+1)+0);
-		if(random!=0)
-		{
-			pal = listaPalabras.get(random);
-		}
-		return pal;
+		return listaPalabras.get(random);
 	}
 }
 
