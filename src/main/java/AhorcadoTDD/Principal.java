@@ -161,9 +161,13 @@ public class Principal {
 	
 	public static void main(String[] args) {
 		//IniciarJuego();
-		String palabra = "pal a bra";
-		int i = palabra.indexOf(' ');
-		 System.out.println("resultado: " +i);
+		Palabra p = new Palabra();
+		String palabra = "arbol";
+		String palabraOculta = "_ _ _ _ _";
+		char c = 'r';
+		//String valorEsperado = "_ r _ _ _";
+		String s = p.MostrarLetraEnPalabra(palabra, palabraOculta, c);
+		 System.out.println(s);
 	}
 
 }

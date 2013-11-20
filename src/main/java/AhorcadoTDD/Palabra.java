@@ -92,17 +92,18 @@ public class Palabra {
 		return aux;
 	}
 
-	public boolean EstaLetraEnPalabra(String palabra, char c) {
+	public String MostrarLetraEnPalabra(String palabra, String palabraOculta, char c) {
 		int cont = 0;
-		boolean resp = false;
+		//int aux = 0;
+		String nuevaPalabraOculta = palabraOculta;
 		while(cont < palabra.length())
 		{
 			if(c == palabra.charAt(cont))
 			{
-				resp = true;
+				nuevaPalabraOculta = palabraOculta.substring(0, cont+1) +c+palabraOculta.substring(cont+2,palabraOculta.length());
 			}
 			cont++;
 		}
-		return resp;
+		return nuevaPalabraOculta;
 	}
 }

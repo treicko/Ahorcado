@@ -26,15 +26,24 @@ public class TestPalabra {
 	}
 	
 	@Test
-	public void DadaUnaLetraDeVuelveTrueSiEstaLaLetraEnLaPalabra()
+	public void DadaUnaLetraMuestraLaLetraEnLaPalabraSiEstaEstaEnElla()
 	{
 		Palabra p = new Palabra();
 		String palabra = "arbol";
-		String palabra2 = "casa";
+		String palabraOculta = "_ _ _ _ _";
 		char c = 'r';
+		String valorEsperado = "_ r _ _ _";
+		assertTrue(valorEsperado.equals(p.MostrarLetraEnPalabra(palabra, palabraOculta, c)));
+	}
+	
+	@Test
+	public void DadaUnaLetraQueNoEstaEnLaPalabraMuestraLaPalabraComoTal()
+	{
+		Palabra p = new Palabra();
+		String palabra2 = "casa";
+		String palabraOculta = "_ _ _ _";
 		char c2 = 'x';
-		assertEquals(false, p.EstaLetraEnPalabra(palabra2, c2));
-		assertEquals(true, p.EstaLetraEnPalabra(palabra, c));
+		assertTrue(palabraOculta.equals(p.MostrarLetraEnPalabra(palabra2, palabraOculta, c2)));
 	}
 
 }
