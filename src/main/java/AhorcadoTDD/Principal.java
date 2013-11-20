@@ -54,9 +54,7 @@ public class Principal {
 		   ch = (char) System.in.read();	
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		
+		}		
 		
 	}
 
@@ -94,8 +92,8 @@ public class Principal {
 		//Palabra j = new Palabra("s");
 		ArrayList jugadas = new ArrayList();
 		//jugadas = j.getLetras();
-		jugadas.add(new Letra('j'));
-		jugadas.add(new Letra('s'));
+		jugadas.add(new Letra(' '));
+		//jugadas.add(new Letra('s'));
 		ArrayList palabra = new ArrayList();
 		palabra = p.darOcurrencias(jugadas);
 		//System.out.println(palabra);
@@ -116,6 +114,9 @@ public class Principal {
 		System.out.println(x);
 		System.out.println(y);
 		System.out.println(z);
+		
+		InterfazAhorcado juego = new InterfazAhorcado();
+		juego.iniciarJuego();
 	}
 	
 	public static void Bienvenida()
@@ -175,20 +176,6 @@ public class Principal {
 	}
 	
 	public static void main(String[] args) {
-		//IniciarJuego();
-		Palabra p = new Palabra();
-		String palabra = "ablea";
-		String palabraOculta = "_ _ _ _ _";
-		char c = 'a';
-		//String valorEsperado = "_ a _ _ _ _ a _";
-		String auxp = p.MostrarLetraEnPalabra(palabra, palabraOculta, c);
-		System.out.println(auxp);
-		
-		//most();
-		
-		//Pistas p = new Pistas();
-		//String lala = p.NuevoArray("_____", 3, "arbol", 'o');
-		//System.out.println(lala);
+		IngresarLetraAlex();
 	}
-
-}
+ }
