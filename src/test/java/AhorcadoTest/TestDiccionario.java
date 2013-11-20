@@ -61,4 +61,12 @@ public class TestDiccionario {
 		assertEquals(false, palabra.isEmpty());
 		
 	}
+	
+	@Test
+	public void DevuelveUnMensajeSiLaPalabraIngresadaEsInvalida()
+	{
+		String palabra = "palabra invalida";
+		assertEquals(false, diccionario.ValidarPalabra(palabra));
+		
+	}
 }

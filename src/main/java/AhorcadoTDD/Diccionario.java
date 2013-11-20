@@ -21,24 +21,27 @@ public class Diccionario {
         PrintWriter pw = null;
 	      
         boolean resp = false;
-        try
+        if(ValidarPalabra(palabra))
         {
-            if(!BuscarPalabraEnDiccionario(palabra))
-            {
-            	fichero = new FileWriter("diccionario.txt", true);
-            	pw = new PrintWriter(fichero);
-                pw.println(palabra.toLowerCase());
-                resp = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
+	        try
+	        {
+	            if(!BuscarPalabraEnDiccionario(palabra))
+	            {
+	            	fichero = new FileWriter("diccionario.txt", true);
+	            	pw = new PrintWriter(fichero);
+	                pw.println(palabra.toLowerCase());
+	                resp = true;
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	           try {
+	           if (null != fichero)
+	              fichero.close();
+	           } catch (Exception e2) {
+	              e2.printStackTrace();
+	           }
+	        }
         }
 
 		return resp;
@@ -171,6 +174,14 @@ public class Diccionario {
 	private String GetPalabra(ArrayList<String> listaPalabras) {
 		int random = (int)(Math.random()*(listaPalabras.size()-1-0+1)+0);
 		return listaPalabras.get(random);
+	}
+
+	public boolean ValidarPalabra(String palabra) {
+		boolean resp = true;
+		int a = palabra.indexOf(' ');
+		if(a>0)
+			resp = false;
+		return resp;
 	}
 }
 

@@ -30,7 +30,7 @@ public class Principal {
 		if(resp)
 			System.out.print("La palabra "+ Palabra+" fue ingresado exitosamente");
 		else
-			System.out.print("La palabra {"+Palabra+"} ya existe en el diccionario");
+			System.out.print("La palabra {"+Palabra+"} ya existe en el diccionario y/o la palabra es invalida por que contiene un espacio");
 			
 	}
 	
