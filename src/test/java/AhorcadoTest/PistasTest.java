@@ -47,11 +47,27 @@ public class PistasTest {
 		assertEquals(2,nuevo.pistasPorNivel);
 	}
 	@Test
-	public void MostrarPista()
+	public void revisarSiLetraEstaEnPalabra()
 	{
 		int posicionDeLaPista=3;
 		String palabra="hola";
 		assertEquals('a',nuevo.BuscarLetra(posicionDeLaPista,palabra));
+	}
+	@Test
+	public void MostrarPista()
+	{
+		String palabraOculta="????";
+		String Palabra="hola";
+		int posicionDeLaPista=2;
+		assertEquals("??l?",nuevo.NuevoArray(palabraOculta,posicionDeLaPista,Palabra,'l'));
+	}
+	@Test
+	public void revisarLetra()
+	{
+		char letra='o';
+		int posicionDeLaPista=1;
+		String palabra="hola";
+		assertEquals(true,nuevo.BuscarLetraenPalabra(posicionDeLaPista,palabra,letra));
 	}
 
 }
