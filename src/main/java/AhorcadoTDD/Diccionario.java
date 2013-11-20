@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class Diccionario {
 	
@@ -19,24 +21,27 @@ public class Diccionario {
         PrintWriter pw = null;
 	      
         boolean resp = false;
-        try
+        if(ValidarPalabra(palabra))
         {
-            if(!BuscarPalabraEnDiccionario(palabra))
-            {
-            	fichero = new FileWriter("diccionario.txt", true);
-            	pw = new PrintWriter(fichero);
-                pw.println(palabra.toLowerCase());
-                resp = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
+	        try
+	        {
+	            if(!BuscarPalabraEnDiccionario(palabra))
+	            {
+	            	fichero = new FileWriter("diccionario.txt", true);
+	            	pw = new PrintWriter(fichero);
+	                pw.println(palabra.toLowerCase());
+	                resp = true;
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	           try {
+	           if (null != fichero)
+	              fichero.close();
+	           } catch (Exception e2) {
+	              e2.printStackTrace();
+	           }
+	        }
         }
 
 		return resp;
@@ -112,27 +117,70 @@ public class Diccionario {
 
 	public boolean BorrarContenido() {
 		
-		FileWriter fichero = null;
-        PrintWriter pw = null;
-	      
-        boolean resp = false;
-        try
-        {
-            	fichero = new FileWriter("diccionario.txt");
-            	pw = new PrintWriter(fichero);
-                pw.println("");
-                resp = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
-        }
+		boolean resp = false;
+		File fichero = new File("diccionario.txt");
+		if (fichero.delete())
+		{
+			try {
+				  // A partir del objeto File creamos el fichero físicamente
+				  if (fichero.createNewFile())
+				    resp = true;
+				  else
+				    resp = false;
+				} catch (IOException ioe) {
+				  ioe.printStackTrace();
+				}
+		}	 
+		return resp;
+	}
+
+	public String ObtenerPalabra() {
 		
+		  File archivo = null;
+	      FileReader fr = null;
+	      BufferedReader br = null;
+	      
+	      ArrayList<String> ListaPalabras = new ArrayList<String>();
+	 
+	      try 
+	      {
+	         archivo = new File ("diccionario.txt");
+	         fr = new FileReader (archivo);
+	         br = new BufferedReader(fr);
+	         String linea = "";
+	         while((linea = br.readLine())!=null)
+	        	 ListaPalabras.add(linea);
+	      }
+	      catch(Exception e)
+	      {
+	         e.printStackTrace();
+	      }
+	      finally
+	      {
+	          try
+	          {                    
+	             if( null != fr )  
+	                fr.close();               
+	          }
+	          catch (Exception e2)
+	          { 
+	             e2.printStackTrace();
+	          }
+	      }
+		
+		return GetPalabra(ListaPalabras);
+	}
+
+	private String GetPalabra(ArrayList<String> listaPalabras) {
+		int random = (int)(Math.random()*(listaPalabras.size()-1-0+1)+0);
+		return listaPalabras.get(random);
+	}
+
+	public boolean ValidarPalabra(String palabra) {
+		boolean resp = true;
+		int a = palabra.indexOf(' ');
+		if(a>0)
+			resp = false;
 		return resp;
 	}
 }

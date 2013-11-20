@@ -27,7 +27,6 @@ public class TestDiccionario {
 	@Test
 	public void AniadirLetraAlFinalDeUnArchivo()
 	{
-		Diccionario diccionario = new Diccionario();
 		String palabra = "chuleta";
 		diccionario.AniadirPalabra(palabra);
 		assertEquals(palabra,diccionario.LeerUltimaPalabraDelDiccionario());
@@ -36,7 +35,6 @@ public class TestDiccionario {
 	@Test
 	public void DevuelveFalseSiLaPalabraAIngresarYaSeEncuentraEnElDiccionario()
 	{
-		Diccionario diccionario = new Diccionario();
 		String palabra = "macarron";
 		diccionario.AniadirPalabra(palabra);
 		assertEquals(false,diccionario.AniadirPalabra(palabra));
@@ -45,10 +43,30 @@ public class TestDiccionario {
 	@Test
 	public void DevuelveTrueSiLasLetrasDeUnFicheroSonBorradas()
 	{
-		Diccionario diccionario = new Diccionario();
 		diccionario.AniadirPalabra("palabra1");
 		diccionario.AniadirPalabra("palabra2");
 		assertEquals("palabra2",diccionario.LeerUltimaPalabraDelDiccionario());
 		assertEquals(true, diccionario.BorrarContenido());
+	}
+	
+	@Test
+	public void DevuelveUnaPalabraAleatoriaObtenidaDelDiccionario()
+	{
+		diccionario.AniadirPalabra("paralelepipedo");
+		diccionario.AniadirPalabra("sorpresa");
+		diccionario.AniadirPalabra("chocolate");
+		diccionario.AniadirPalabra("elicoptero");
+		String palabra = "";
+		palabra = diccionario.ObtenerPalabra();
+		assertEquals(false, palabra.isEmpty());
+		
+	}
+	
+	@Test
+	public void DevuelveUnMensajeSiLaPalabraIngresadaEsInvalida()
+	{
+		String palabra = "palabra invalida";
+		assertEquals(false, diccionario.ValidarPalabra(palabra));
+		
 	}
 }
